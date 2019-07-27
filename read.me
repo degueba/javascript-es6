@@ -1,0 +1,225 @@
+Javascript es6
+
+ecmascript 2015 + 1  = javascript es6
+
+
+
+formula as novas funcionalidades do javascript
+
+o que é?
+quais versões?
+babel
+
+
+
+babel pega o código que vc escreve com as novas funcionalides e 
+transpilar para um javascript que navegadores antigos conheçam.
+
+
+javascript não existia classes, porém com es6 já temos acesso de forma nativa no javascript
+babel converte essas classes para uma sintaxe de função.
+
+
+Funcionalidades
+
+Webpack (livereload, servidor de desenvolvimento e etc ...)
+Classes
+Arrow functions
+Desestruturação
+Rest/Spread
+Import/Export
+Async/Await
+
+
+yarn install @babel/cli
+yarn install @babel/preset-env
+
+
+package-lock é só uma espécie de cache para o package.json
+
+
+
+
+
+
+
+
+
+
+
+porque tem tanta coisa no node_modules?
+
+
+
+babel transformar as features es6 es8 para features do javascript que funcione em todos os navegadores
+
+babel tem vários presets
+
+o preset-env identifica qual o ambiente que estou trabalhando (desktop,mobile entre outros)
+converte as features do es6 es8 para o dos navegadores
+
+
+
+ "scripts": {
+    "dev": "babel ./main.js -o ./bundle.js -w"
+  }
+
+
+monitora os arquivos alterados para transpilar
+
+
+
+
+
+super()  -> chama o método construtor da classe extendida
+
+
+
+
+MÉTODOS ESTÁTICOS NÃO ENXERGAM O RESTANTE DA CLASSE
+
+
+
+
+*************************
+
+const usuario = {nome: 'Rodrigo'};
+// não pode ter seu valor reatribuido
+
+
+usuario.nome = 'Cleiton';
+
+console.log(usuario);
+
+// mutação é diferente de reatribuir
+
+
+
+let só funciona com escopo
+
+
+
+
+
+// ARROW FUNCTIONS
+
+
+const teste = () => {}
+
+
+// VALORES PADRÃO
+
+const teste = (a,b = 5) => {
+	return a + b;
+}
+
+
+
+// DESESTRUTURAÇÃO
+
+const usuario = {
+    nome: 'Rodrigo',
+    idade: 23,
+    endereco: {
+        cidade: 'RIo de Janeiro',
+        estado: 'RJ'
+    }
+} 
+
+let {nome, idade, endereco : {cidade}} = usuario;
+
+
+
+
+function mostraNome({nome, idade, endereco}){
+    console.log(nome);
+    console.log(idade);
+}
+
+mostraNome(usuario);
+
+
+
+
+object short syntax
+
+
+
+
+
+--------------------
+
+CONFIGURANDO WEBPACK
+
+
+
+
+// Import and export functions
+
+
+
+O WEBPACK CRIA O BUNDLE.JS mas não vemos ele fisicamente!
+PARA VERMOS É SÓ GERARMOS O BUILD
+
+webpack --mode=production
+
+
+
+// How to work with async promises
+const minhaPromise = () => {
+   return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('ok')
+        }, 2000)
+    })
+}
+
+
+ASYNC AND AWAIT
+
+// this function just execute the first one if the last one has been executed
+
+// its turn on a promise when we use async 
+// async function executaPromise() {
+//     const response  = await minhaPromise();
+//     const response2 = await minhaPromise();
+
+//     console.log(response);
+//     console.log('ok2: ', response2);
+// }
+
+
+// executaPromise();
+
+
+const executaPromise = async () => {
+    console.log(await minhaPromise())
+}
+
+
+executaPromise()
+
+
+
+
+
+
+//  
+import axios from 'axios';
+
+
+class Api {
+    static async getUserInfo(username){
+        try {
+            const response = await axios.get(`https://api.github.com/users/${username}`);
+
+            console.log(response);
+        } catch(err){
+            console.warn('Erro na API');
+        }
+    }
+}
+
+Api.getUserInfo('diego3g');
+Api.getUserInfo('diego3gdsdsd');
+

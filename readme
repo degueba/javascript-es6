@@ -1,0 +1,76 @@
+Javascript es6
+
+ecmascript 2015 + 1  = javascript es6
+
+
+
+formula as novas funcionalidades do javascript
+
+o que é?
+quais versões?
+babel
+
+
+
+babel pega o código que vc escreve com as novas funcionalides e 
+transpilar para um javascript que navegadores antigos conheçam.
+
+
+javascript não existia classes, porém com es6 já temos acesso de forma nativa no javascript
+babel converte essas classes para uma sintaxe de função.
+
+
+Funcionalidades
+
+Webpack (livereload, servidor de desenvolvimento e etc ...)
+Classes
+Arrow functions
+Desestruturação
+Rest/Spread
+Import/Export
+Async/Await
+
+
+yarn install @babel/cli
+yarn install @babel/preset-env
+
+
+package-lock é só uma espécie de cache para o package.json
+
+
+
+
+
+
+
+
+
+
+
+porque tem tanta coisa no node_modules?
+
+
+
+babel transformar as features es6 es8 para features do javascript que funcione em todos os navegadores
+
+babel tem vários presets
+
+o preset-env identifica qual o ambiente que estou trabalhando (desktop,mobile entre outros)
+converte as features do es6 es8 para o dos navegadores
+
+
+
+ "scripts": {
+    "dev": "babel ./main.js -o ./bundle.js -w"
+  }
+
+
+monitora os arquivos alterados para transpilar
+
+
+
+
+
+super()  -> chama o método construtor da classe extendida
+
+
