@@ -25,12 +25,12 @@ class App {
         if(repoInput.length === 0) return;
 
         try {
-            console.log(repoInput);
-            
+            let loading = document.createElement('p');
+            loading.appendChild(document.createTextNode('carregando...'));
+            this.formEl.after(loading);
+
             const response = await api.get(`/repos/${repoInput}`);
             const {name, description, owner: {avatar_url}, html_url} = response.data;
-            
-            console.log(response.data);
 
             this.repositories.push({
                 name,
@@ -38,16 +38,16 @@ class App {
                 html_url,
                 avatar_url
             });
+
+            this.inputEl.value = '';
+
+            this.render();
+
+
+            loading.remove()
         } catch(err) {
             console.warn('Ero na api -> ', err);
         }
-        
-
-        
-
-        
-
-        this.render();
     }
 
     render(){
